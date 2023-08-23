@@ -62,14 +62,15 @@ pipeline {
       }
     }
     }
-  }
-     post ('Deploying App to Kubernetes') {
+    stage('Deploying App to Kubernetes') {
       steps {
         script {
           kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
         }
       }
      }
+  }
+     
     post {
       always {
         container('docker') {
