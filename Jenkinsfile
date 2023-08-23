@@ -51,7 +51,7 @@ pipeline {
     stage('Login-Into-Docker') {
       steps {
         container('docker') {
-          sh 'docker login -u <static92> -p <W7xryrfs92>'
+          sh 'docker login -u static92 -p W7xryrfs92'
       }
     }
     }
