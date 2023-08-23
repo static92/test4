@@ -63,6 +63,13 @@ pipeline {
     }
     }
   }
+     post ('Deploying App to Kubernetes') {
+      steps {
+        script {
+          kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
+        }
+      }
+     }
     post {
       always {
         container('docker') {
@@ -70,19 +77,5 @@ pipeline {
       }
       }
     }
- stages {
-        stage("build and test the project") {
-            agent {
-                kubernetes
-            }
-        stage('Deploying App to Kubernetes') {
-          steps {
-            script {
-             sh 'kubeclt apply -f deployment.yaml'
-            }
-          }
-        }
-        }
- }
 }
 
