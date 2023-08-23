@@ -55,14 +55,14 @@ pipeline {
       }
     }
     }
-     stage('Push-Images-Docker-to-DockerHub') {
+    stage('Push-Images-Docker-to-DockerHub') {
       steps {
         container('docker') {
           sh 'docker push static92/lol:latest'
       }
     }
-     }
-    stage('Deploying App to Kubernetes') {
+    }
+     stage('Deploying App to Kubernetes') {
       steps {
         script {
           kubernetesDeploy(configs: "deployment.yaml", "service.yaml")
