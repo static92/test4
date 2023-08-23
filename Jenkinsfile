@@ -62,13 +62,10 @@ pipeline {
       }
     }
     }
-    stage('Deploying App to Kubernetes') {
-      steps {
-        script {
+    stage('Deploying App to Kubernetes') agent {kubernetes{
           sh 'kubectl apply -f deployment.yaml'
         }
-      }
-     }
+                                               }
   }
      
     post {
