@@ -63,9 +63,7 @@ pipeline {
     }
     }
      stage('Deploying App to Kubernetes') {
-       agent {
-                kubernetes
-            }
+       agent {kubernetes}
        steps {
          script {
           sh 'kubeclt apply -f deployment.yaml'
