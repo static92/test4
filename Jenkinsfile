@@ -62,8 +62,7 @@ pipeline {
       }
     }
     }
-  }
-     
+  }   
     post {
       always {
         container('docker') {
@@ -71,9 +70,5 @@ pipeline {
       }
       }
     }
-  agent {kubernetes{
-          sh 'kubectl apply -f deployment.yaml'
-        }
-                                               }
 }
 
